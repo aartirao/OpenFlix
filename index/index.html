@@ -11,16 +11,18 @@
 
     <title>Home</title>
     <script src="/static/scripts/jwplayer.js"></script>
+    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
     <script>jwplayer.key="ndT/nIc0dZbw39nIXYAxsrV/UmHSyQUSuPnK9g==";</script>
     <script src="/static/scripts/jquery.js"></script>
     <script src="/static/scripts/main.js"></script>
-
+    
 </head>
 
 <body>
     <h1>This is a video!</h1>
-    <div id="player">
+    <!--<div id="player">
         Loading the player...
-    </div>
+    </div>-->
+    <video data-dashjs-player autoplay src="http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd" controls></video>
 </body>
 </html>
