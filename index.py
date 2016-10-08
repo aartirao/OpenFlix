@@ -2,6 +2,7 @@ from bottle import Bottle, run, template, static_file, get, post, request, respo
 
 
 import ConfigParser
+import subprocess
 
 config = ConfigParser.ConfigParser()
 config.read('db.cfg')
@@ -18,6 +19,22 @@ def stylesheets(path):
 @app.route('/home/')
 def index(): 
 	return template('index/index.html')
+
+# Route for uploads page
+@app.route('/uploads',method="GET")
+def index():
+        return template('index/upload.html')
+
+#Route to save uploaded file
+@app.route('/upload', method='POST')
+def video_upload():
+    path = '/usr/local/nginx/Videos/vod'
+    category   = request.forms.get('category')
+    upload     = request.files.get('upload')
+
+    upload.save(path) # appends upload.filename automatically
+    subprocess.call([path+'/transcode.sh', str(upload.filename), 'rt'])
+    return 'OK'
 
 
 run(app, host=config.get('database','host'), port=config.get('database','port'), debug=True)
