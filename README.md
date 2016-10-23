@@ -32,7 +32,7 @@ git clone https://github.com/leev/ngx_http_geoip2_module.git
 TAKE BACKUP OF NGINX CONF
 cd nginx-1.8.1/
 sudo apt-get install libgeoip-dev
-./configure --with-http_ssl_module --with-http_geoip_module --add-module=../nginx-rtmp-module-master
+./configure --with-http_ssl_module --with-http_stub_status_module --with-http_geoip_module --add-module=../nginx-rtmp-module-master
 sudo make
 sudo make install
 replace NGINX.conf with the backup
