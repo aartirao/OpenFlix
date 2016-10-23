@@ -21,3 +21,4 @@ https://gpac.wp.mines-telecom.fr/2015/07/29/gpac-build-mp4box-only-all-platforms
 Steps:
 1. sudo apt-get install x264
 2. sudo apt-get install gpac
+3. sudo apt-get install ffmpeg
