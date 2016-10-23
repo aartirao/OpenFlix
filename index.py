@@ -33,7 +33,9 @@ def video_upload():
     upload     = request.files.get('upload')
 
     upload.save(path) # appends upload.filename automatically
-    subprocess.call([path+'/transcode.sh', str(upload.filename), 'rt'])
+    print 'cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', '')
+    #subprocess.call(['cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv','')])
+    subprocess.call('cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', ''), shell=True)
     return 'OK'
 
 
