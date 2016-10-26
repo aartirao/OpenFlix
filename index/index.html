@@ -55,14 +55,8 @@
     </center>
     <center>
     <ol id="playlist" class="playlist-class">
-        <li class="list-item"><img class="img-class" src="/static/images/bbb.jpeg" /></li>
-        
-        <li class="list-item"><img class="img-class" src="/static/images/bat.jpg" /></li>
-        <li class="list-item"><img class="img-class" src="/static/images/friends.webp" /></li>
-        <li class="list-item"><img class="img-class" src="/static/images/top.webp" /></li>
-        <li class="list-item"><img class="img-class" src="/static/images/bbad.webp" /></li>
-        <li class="list-item"><img class="img-class" src="/static/images/narcos.jpg" /></li>
-        <li class="list-item"><img class="img-class" src="/static/images/cards.jpg" /></li>
+    % for thumb in thumbs:
+      <li class="list-item"><img class="img-class" src="/{{thumb}}" /></li>             % end
     </ol>
     </center>
 </body>

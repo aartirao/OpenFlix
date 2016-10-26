@@ -1,8 +1,9 @@
 from bottle import Bottle, run, template, static_file, get, post, request, response, abort
 
-
+from ffvideo import VideoStream
 import ConfigParser
 import subprocess
+import glob
 
 config = ConfigParser.ConfigParser()
 config.read('db.cfg')
@@ -18,7 +19,12 @@ def stylesheets(path):
 @app.route('/home')
 @app.route('/home/')
 def index(): 
-	return template('index/index.html')
+    files = glob.glob("index/static/images/thumbnails/*.jpeg")
+    
+    for i in range(0, len(files)):
+        files[i] = files[i].replace('index/','')
+    print files
+    return template('index/index.html', thumbs=files)
 
 # Route for uploads page
 @app.route('/uploads',method="GET")
@@ -32,9 +38,11 @@ def video_upload():
     category   = request.forms.get('category')
     upload     = request.files.get('upload')
 
+    thumbnail = VideoStream(str(upload.filename)).get_frame_at_sec(3).image() 
+    thumbnail.save('./thumbnails/'+str(upload.filename).replace('.flv', '')+'frame3sec.jpeg')	
+
     upload.save(path) # appends upload.filename automatically
     print 'cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', '')
-    #subprocess.call(['cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv','')])
     subprocess.call('cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', ''), shell=True)
     return 'OK'
 
