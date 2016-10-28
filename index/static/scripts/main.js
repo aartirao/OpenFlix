@@ -1,13 +1,16 @@
 $(document).ready(function () {
-    jwplayer('player').setup({
-    //file: "http://www.html5videoplayer.net/videos/toystory.mp4",
-    file: "rtmp://fms.12E5.edgecastcdn.net/0012E5/mp4:videos/8Juv1MVa-485.mp4",
-    //file: "/static/files/toystory.mp4",
-    image: "http://www.disney.co.uk/sites/default/files/styles/retina-reduction/public/toy-story/GENERIC/Section%20Listing/600x338-toystory-characters.jpg"
-    //width: "100%",
-    //height: "100%",
-    //stretching: "fill"
-  });
+  $(".img-class").click(function(){ 
+	$("#player").get(0).pause();	
+	var filename = this.id;
+	filename = filename.replace('static/images/thumbnails/','');
+	filename = filename.replace('.jpeg','_dash.mpd');
+	player = dashjs.MediaPlayer().create();
+	player.initialize($("#player").get(0), "http://10.1.20.113/dash_vod/"+filename, true);
+	$("#player").get(0).load();
+	$("#player").get(0).play();
+ });
 });
 
-// flashplayer:"//cdn.jsdelivr.net/jwplayer/5.10/player.swf"
+
+
+

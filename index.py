@@ -40,7 +40,7 @@ def video_upload():
     upload.save(path) # appends upload.filename automatically
     #create thumbnail
     thumbnail = VideoStream(path+'/'+str(upload.filename)).get_frame_at_sec(3).image() 
-    thumbnail.save('./index/static/images/thumbnails/'+str(upload.filename).replace('.flv', '')+'frame3sec.jpeg')
+    thumbnail.save('./index/static/images/thumbnails/'+str(upload.filename).replace('.flv', '')+'.jpeg')
     #run transcode module
     subprocess.call('cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', ''), shell=True)
     return 'OK'
