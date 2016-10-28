@@ -23,7 +23,6 @@ def index():
     
     for i in range(0, len(files)):
         files[i] = files[i].replace('index/','')
-    print files
     return template('index/index.html', thumbs=files)
 
 # Route for uploads page
@@ -36,13 +35,13 @@ def index():
 def video_upload():
     path = '/usr/local/nginx/Videos/vod'
     category   = request.forms.get('category')
-    upload     = request.files.get('upload')
-
-    thumbnail = VideoStream(str(upload.filename)).get_frame_at_sec(3).image() 
-    thumbnail.save('./thumbnails/'+str(upload.filename).replace('.flv', '')+'frame3sec.jpeg')	
+    upload     = request.files.get('upload')	
 
     upload.save(path) # appends upload.filename automatically
-    print 'cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', '')
+    #create thumbnail
+    thumbnail = VideoStream(path+'/'+str(upload.filename)).get_frame_at_sec(3).image() 
+    thumbnail.save('./index/static/images/thumbnails/'+str(upload.filename).replace('.flv', '')+'frame3sec.jpeg')
+    #run transcode module
     subprocess.call('cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', ''), shell=True)
     return 'OK'
 
