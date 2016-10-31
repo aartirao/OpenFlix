@@ -38,7 +38,7 @@
          background-color: black;
 	}
         button {
-		background-color: black; width: 5%; display: block; /* margin-left: auto; */ float: right; margin: 20px;
+		background-color: black; width: 8%; display: block; /* margin-left: auto; */ float: right; margin: 3%;
 	}
 
         .img-class{
@@ -67,6 +67,9 @@
             text-align: center;
             color: gold;
         }
+	#holder {
+	    margin-left: 22%;
+	}
     </style>
     
 </head>
@@ -75,14 +78,14 @@
     <!--<div id="player">
         Loading the player...
     </div>-->
-    <div style="text-align:center;"><h1>Open Flix 
-	<button style="float:right;" id="myBtn"><img src="/static/images/video.png"/></button>
-    </h1></div>
-    <center id="holder">
+    <div style="text-align:center;margin-bottom: 4%;"><h1>Open Flix</h1>
+	<button style="float:right;display: inline;" id="myBtn"><img src="/static/images/video.png"/></button>
+    </div>
+    <div id="holder">
     <video id="player" data-dashjs-player autoplay src="http://10.1.20.113/dash_vod/20051210-w50s_dash.mpd" controls></video>
     <!--http://amssamples.streaming.mediaservices.windows.net/683f7e47-bd83-4427-b0a3-26a6c4547782/BigBuckBunny.ism/manifest(format=mpd-time-csf)
     -->
-    </center>
+    </div>
     <center>
     <ol id="playlist" class="playlist-class">
     % for thumb in thumbs:
