@@ -21,8 +21,11 @@ btn.onclick = function() { modal.style.display = "block"; }
 span.onclick = function() { modal.style.display = "none"; } 
 window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
 
-    $("#uploadvideo").click(function(){$(".modal-body").html("<img style='width:20%;' src='https://s-media-cache-ak0.pinimg.com/originals/93/a4/39/93a439f02fed8676fb281e461bbde801.gif'></img>");
-$(".modal-content").height("50%")});
+    $("#uploadvideo").click(function(){$(".modal-body").html("<img id='upload-img' style='width:20%;' src='https://s-media-cache-ak0.pinimg.com/originals/93/a4/39/93a439f02fed8676fb281e461bbde801.gif'></img>");
+$(".modal-content").height("50%");
+$(".modal-content").width("30%"); 
+$("#upload-img").width("90%");
+});
 });
 
 
