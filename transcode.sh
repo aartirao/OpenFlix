@@ -19,5 +19,10 @@ MP4Box -add $inter -fps 24 $output_filename
 
 MP4Box -dash 4000 -frag 4000 -rap -segment-name ${output_file%.*}_segment_ $output_filename
 
+scp ${output_file%.*}_segment* ubuntu@192.168.1.7:/usr/local/nginx/Videos/vod/
+scp ${output_file%.*}_dash.mpd ubuntu@192.168.1.7:/usr/local/nginx/Videos/vod/
+scp ${output_file%.*}_dash.mpd ubuntu@192.168.1.5:/usr/local/nginx/Videos/vod/ 
+scp ${output_file%.*}_segment* ubuntu@192.168.1.5:/usr/local/nginx/Videos/vod/
+
 rm $inter
 rm x264*

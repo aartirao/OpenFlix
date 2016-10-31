@@ -1,4 +1,4 @@
-from bottle import Bottle, run, template, static_file, get, post, request, response, abort
+from bottle import Bottle, run, template, static_file, get, post, request, response, abort, redirect
 
 from ffvideo import VideoStream
 import ConfigParser
@@ -43,7 +43,7 @@ def video_upload():
     thumbnail.save('./index/static/images/thumbnails/'+str(upload.filename).replace('.flv', '')+'.jpeg')
     #run transcode module
     subprocess.call('cd '+path +' && '+ './transcode.sh ' + str(upload.filename) + ' ' + str(upload.filename).replace('.flv', ''), shell=True)
-    return 'OK'
+    redirect("/home")
 
 
 run(app, host=config.get('database','host'), port=config.get('database','port'), debug=True)

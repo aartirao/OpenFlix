@@ -10,11 +10,22 @@
     <meta name="author" content="">
 
     <title>Home</title>
-    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
-    <script>jwplayer.key="ndT/nIc0dZbw39nIXYAxsrV/UmHSyQUSuPnK9g==";</script>
     <script src="/static/scripts/jquery.js"></script>
+    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="/static/scripts/main.js"></script>
     <style>
+        input { font-size: medium;}
+        
+        .modal { display: none; /* Hidden by default */ position: fixed; /* Stay in place */ z-index: 1; /* Sit on top */ padding-top: 100px; /* Location of the box */ left: 0; top: 0; width: 100%; /* Full width */ height: 100%; /* Full height */ overflow: auto; /* Enable scroll if needed */ background-color: rgb(0,0,0); /* Fallback color */ background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ }
+
+        .modal-content { font-size: x-large; height:16%; position: relative; background-color: #fefefe; margin: auto; padding: 0; width: 80%; -webkit-animation-name: animatetop; -webkit-animation-duration: 0.4s; animation-name: animatetop; animation-duration: 0.4s; text-align:center; }
+
+        /* Add Animation */ @-webkit-keyframes animatetop { from {top:-300px; opacity:0} to {top:0; opacity:1} } @keyframes animatetop { from {top:-300px; opacity:0} to {top:0; opacity:1} }
+
+            /* The Close Button */ .close { color: white; float: right; font-size: 28px; font-weight: bold; } .close:hover, .close:focus { color: #000; text-decoration: none; cursor: pointer; } .modal-header { padding: 0px 16px; background-color: #5cb85c; color: white; } .modal-body {padding-bottom: 3%;} 
+
         .list-item{
              display: inline;
              list-style-type: none;
@@ -22,10 +33,26 @@
         .playlist-class{
 
         }
+        button img {
+	 width: 100%;
+         background-color: black;
+	}
+        button {
+		background-color: black; width: 5%; display: block; /* margin-left: auto; */ float: right; margin: 20px;
+	}
+
         .img-class{
             width: 350px;
             height: 192px;
+	    border-width: thin; 
+            border-style: groove;
+            padding: 2%;
         }
+
+	img:hover{
+	    cursor:pointer;
+            opacity:0.5;
+	}
         body{
             margin: 20px 20px 20px 20px;
             background-color: black;
@@ -33,6 +60,8 @@
         video{
             width: 750px;
             height: 500px;
+            border-style:ridge;
+	    border-radius:10px;
         }
         h1{
             text-align: center;
@@ -46,7 +75,9 @@
     <!--<div id="player">
         Loading the player...
     </div>-->
-    <h1>Open Flix</h1>
+    <div style="text-align:center;"><h1>Open Flix 
+	<button style="float:right;" id="myBtn"><img src="/static/images/video.png"/></button>
+    </h1></div>
     <center id="holder">
     <video id="player" data-dashjs-player autoplay src="http://10.1.20.113/dash_vod/20051210-w50s_dash.mpd" controls></video>
     <!--http://amssamples.streaming.mediaservices.windows.net/683f7e47-bd83-4427-b0a3-26a6c4547782/BigBuckBunny.ism/manifest(format=mpd-time-csf)
@@ -55,8 +86,19 @@
     <center>
     <ol id="playlist" class="playlist-class">
     % for thumb in thumbs:
-      <li class="list-item"><img id={{thumb}} class="img-class" src="/{{thumb}}" /></li>             % end
+      <li class="list-item"><img id={{thumb}} class="img-class" src="/{{thumb}}" /></li>            
+    % end
     </ol>
     </center>
+<div id="popup" class="modal"> <!-- Modal content --> 
+	<div class="modal-content"> 
+		<div class="modal-header"> <span class="close">×</span> <h2>Upload Video</h2> </div> 
+		<div class="modal-body"> <form class="modal-content" action="/upload" method="post" enctype="multipart/form-data">
+  Browse: <input type="file" name="upload" />
+  <input id="uploadvideo" type="submit" value="Upload" />
+</form>
+ </div>  
+	</div> 
+</div>
 </body>
 </html>
