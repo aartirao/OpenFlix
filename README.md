@@ -4,12 +4,15 @@
 
 | Filename  |     Purpose New/ Modified  |    Comments |
 | ------------- |-------------| -----|
+| nginx-install.sh |  Contains the bash script for installing nginx on a server while provisioning |  |
+| transcode.sh |  Contains the bash script converting any video file into MPEG-dash format |  |
 | index.py |  Contains the python code which runs the client server |  |
 | index/index.html | Contains the HTML code which sets the UI structure for client application   |  |
 | index/upload.html | Contains the HTML code which sets the UI structure for upload page   |  |
 | index/scripts/main.js | Contains the javascript code that helps the UI of client application   |  |
 | config-files/nginx.conf | Contains all nginx server configuration details  |  |
 | config-files/geo.conf | Contains IP address to geo-location mapping configuration for nginx server    |  |
+| sample-videos |  Contains videos in MPEG-dash format for testing nginx setup |  |
 
 Server Configuration uses NGINX RTMP Module
 
