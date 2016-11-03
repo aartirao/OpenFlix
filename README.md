@@ -1,12 +1,23 @@
-This project provides cloud based video-on-demand streaming
+# Cloud based video-on-demand service.
+
+## File details
+
+| Filename  |     Purpose New/ Modified  |    Comments |
+| ------------- |-------------| -----|
+| index.py |  Contains the python code which runs the client server |  |
+| index/index.html | Contains the HTML code which sets the UI structure for client application   |  |
+| index/upload.html | Contains the HTML code which sets the UI structure for upload page   |  |
+| index/scripts/main.js | Contains the javascript code that helps the UI of client application   |  |
+| config-files/nginx.conf | Contains all nginx server configuration details  |  |
+| config-files/geo.conf | Contains IP address to geo-location mapping configuration for nginx server    |  |
 
 Server Configuration uses NGINX RTMP Module
 
-Front End - 
+## Front End
 * Python Bottle as the server
 * Dash.js as the video player
 
-To Run -
+## To Run
 
 1. Install nginx with nginx-rtmp and ffmpeg using `sh nginx-install.sh`
 2. Copy the nginx configuration to /usr/local/nginx/conf
