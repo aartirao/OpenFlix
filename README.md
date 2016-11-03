@@ -19,29 +19,31 @@ To Install MP4Box
 https://gpac.wp.mines-telecom.fr/2015/07/29/gpac-build-mp4box-only-all-platforms/
 
 Steps:
-1. sudo apt-get install x264
-2. sudo apt-get install gpac
-3. sudo apt-get install ffmpeg
+sudo apt-get install x264 <br>
+sudo apt-get install gpac <br>
+sudo apt-get install ffmpeg <br> <br>
 
-Nginx-GeoIp module:
-sudo add-apt-repository ppa:maxmind/ppa
-sudo apt-get update
-sudo apt-get install libmaxminddb0 libmaxminddb-dev mmdb-bin
-go to video_streaming_server/nginx/
-git clone https://github.com/leev/ngx_http_geoip2_module.git
-TAKE BACKUP OF NGINX CONF
-cd nginx-1.8.1/
-sudo apt-get install libgeoip-dev
-./configure --with-http_ssl_module --with-http_stub_status_module --with-http_geoip_module --add-module=../nginx-rtmp-module-master
-sudo make
-sudo make install
-replace NGINX.conf with the backup
-wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
-wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz
-gzip -d GeoLite2-City.mmdb.gz
-gzip -d GeoLite2-Country.mmdb.gz
-One method is to use the unzipped files.
-Make config changes as mentioned here - https://gist.github.com/kmjones1979/fcabb4731bbf85b9c50189e90d76b1c1
+Nginx-GeoIp module: <br>
+sudo add-apt-repository ppa:maxmind/ppa  <br>
+sudo apt-get update <br>
+sudo apt-get install libmaxminddb0 libmaxminddb-dev mmdb-bin <br>
+go to video_streaming_server/nginx/ <br>
+git clone https://github.com/leev/ngx_http_geoip2_module.git <br> <br>
+
+TAKE BACKUP OF NGINX CONF <br>
+cd nginx-1.8.1/ <br>
+sudo apt-get install libgeoip-dev <br>
+./configure --with-http_ssl_module --with-http_stub_status_module --with-http_geoip_module --add-module=../nginx-rtmp-module-master <br>
+sudo make <br>
+sudo make install <br>
+replace NGINX.conf with the backup <br>
+wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz <br>
+wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz<br>
+gzip -d GeoLite2-City.mmdb.gz<br>
+gzip -d GeoLite2-Country.mmdb.gz<br>
+One method is to use the unzipped files. <br>
+Make config changes as mentioned here - https://gist.github.com/kmjones1979/fcabb4731bbf85b9c50189e90d76b1c1 <br>
+
 
 
 
