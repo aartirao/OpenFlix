@@ -10,7 +10,8 @@
 | index/index.html | Contains the HTML code which sets the UI structure for client application   |  |
 | index/upload.html | Contains the HTML code which sets the UI structure for upload page   |  |
 | index/scripts/main.js | Contains the javascript code that helps the UI of client application   |  |
-| config-files/nginx.conf | Contains all nginx server configuration details  |  |
+| config-files/nginx-control-server.conf | Contains nginx configuration details for the control-server |  |
+| config-files/nginx-vm.conf | Contains nginx configuration details for VMs that store and stream videos (workers) |  |
 | config-files/geo.conf | Contains IP address to geo-location mapping configuration for nginx server    |  |
 | sample-videos |  Contains videos in MPEG-dash format for testing nginx setup |  |
 
